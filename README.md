@@ -9,7 +9,7 @@ Integrated: It consolidates data from different sources, ensuring consistency by
 Time-Variant: Unlike operational systems, a data warehouse stores historical data over extended periods, allowing trend analysis and time-based insights.
 Non-Volatile: Once data is stored in the warehouse, it remains stable; it cannot be deleted or altered, ensuring historical accuracy and reliability.
 
-![ETL](C:\Ansha\Kent\projects\sql-data-warehouse-project\ETL.png)
+![](C:\Ansha\Kent\projects\sql-data-warehouse-project\ETL.png)
 
 
 
