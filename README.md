@@ -142,7 +142,7 @@ Load is the process of transferring transformed data into a target system, such 
   
   This project we will be building a Data Warehouse using Medallion Architecture.
 
-  ![](architecture.png)
+  ![](Architecture.png)
 
   
 
