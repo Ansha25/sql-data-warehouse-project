@@ -144,9 +144,7 @@ Load is the process of transferring transformed data into a target system, such 
 
   ![](Architecture.png)
 
-  
-
-
+  ## Building Bronze layer
 
 
 
