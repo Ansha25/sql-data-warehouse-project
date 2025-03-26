@@ -19,8 +19,6 @@ Load: Store the transformed data into a centralized repository for efficient ana
 
 ![](ETL.png)
 
-
-
 The above image illustrates the data transformation journey from its raw form to actionable business insights. We can compare this process to the operations of a restaurant:
 
 - Every morning, a restaurant receives a fresh supply of vegetables, just like the incoming raw data we collect from various sources.
@@ -143,6 +141,8 @@ Load is the process of transferring transformed data into a target system, such 
    - Structures data into Bronze (raw), Silver (cleaned), and Gold (business-ready) layers to streamline workflows.
   
   This project we will be building a Data Warehouse using Medallion Architecture.
+
+  ![](architecture.png)
 
   
 
