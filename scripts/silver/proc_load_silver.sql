@@ -50,6 +50,7 @@ BEGIN
 			ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date desc) as flag_last
 	FROM [bronze].[crm_cust_info]  WHERE cst_id is not null) t
 	WHERE flag_last = 1
+	SELECT count(*) FROM [silver].[crm_cust_info];
 	SET @end_time = GETDATE()
 	PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time) AS NVARCHAR) + 'Seconds'
 
@@ -86,14 +87,15 @@ BEGIN
 			END as [prd_line]
 		  ,CAST([prd_start_dt] AS DATE)
 		  ,CAST(LEAD([prd_start_dt]) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE) AS prd_end_dt
-	  FROM [DataWarehouse].[bronze].[crm_prd_info]
+	  FROM [DataWarehouse].[bronze].[crm_prd_info];
+	  SELECT count(*) FROM [silver].[crm_prd_info];
 	  SET @end_time = GETDATE()
 	 PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS NVARCHAR) + 'Seconds'
 
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[crm_sales_details]'
-	TRUNCATE TABLE [silver].[crm_sales_info]
+	TRUNCATE TABLE [silver].[crm_sales_details]
 	PRINT '===INSERTIING DATA INTO: [silver].[crm_sales_details]'
 
 	SET @start_time = GETDATE();
@@ -129,7 +131,8 @@ BEGIN
 				 THEN [sls_sales]/NULLIF([sls_quantity],0)
 			ELSE [sls_price]
 			END AS [sls_price]
-	  FROM [bronze].[crm_sales_details]
+	  FROM [bronze].[crm_sales_details];
+	  SELECT count(*) FROM [silver].[crm_sales_details];
 	  SET @end_time = GETDATE()
 	PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS NVARCHAR) + 'Seconds'
 
@@ -158,6 +161,7 @@ BEGIN
 			   ELSE gen
 			END AS gen
 	  FROM [bronze].[erp_cust_az12]
+	  SELECT count(*) FROM [silver].[erp_cust_az12];
 	  SET @end_time = GETDATE()
 	PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS NVARCHAR) + 'Seconds'
 
@@ -179,6 +183,7 @@ BEGIN
 				ELSE TRIM(cntry)
 			END AS cntry
 	  FROM [DataWarehouse].[bronze].[erp_loc_a101]
+	  SELECT count(*) FROM [silver].[erp_loc_a101];
 	  SET @end_time = GETDATE()
 	PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS NVARCHAR) + 'Seconds'
 
@@ -200,6 +205,7 @@ BEGIN
 		  ,[subcat]
 		  ,[maINTenance]
 	  FROM [DataWarehouse].[bronze].[erp_px_cat_g1v2]
+	  SELECT count(*) FROM [silver].[erp_px_cat_g1v2];
 	  SET @end_time = GETDATE()
 	PRINT 'LOAD TIME:' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS NVARCHAR) + 'Seconds'
 
@@ -216,7 +222,3 @@ BEGIN
 	PRINT 'TOTAL LOAD TIME:' + CAST(DATEDIFF(SECOND,@batch_start_time,@batch_end_time)AS NVARCHAR) + 'Seconds'
 
 END
-
-
-
-
