@@ -144,7 +144,41 @@ Load is the process of transferring transformed data into a target system, such 
 
   ![](Architecture.png)
 
-  ## Building Bronze layer
+  ## Step3: Project Intialization
+
+  ### Naming Conventions
+
+1.**Case** : Snake Case
+2.**Language**  : English
+3.**Bronze Rules**
+All Names must start with the source system name, and table names must match their original names without renaming.
+  **<sourcesystem>_<entity>**
+4.**Silver Rules**
+All Names must start with the source system name, and table names must match their original names without renaming.
+  **<sourcesystem>_<entity>**
+5.**Gold Rules**
+All names must use meaningful, business-aligned names for tables, starting with the category prefix.
+  **<category>_<entity>**
+
+
+  ### Building Bronze Layer
+
+The bronze layer is the initial stage of the data pipeline where raw data is ingested into the system. The focus in this layer is to bulk load raw data without applying any validations or transformations. This ensures the data remains in its original form for further processing in subsequent layers.
+
+1.**Bulk Insert** : Data is ingested using stored procedures, which automate the process of inserting raw files (e.g., CSV, JSON) into the system.
+2.**Confirmation**: 
+Basic checks are performed to ensure that the data is successfully loaded.
+     Verify that the correct files have been ingested
+     Confirm the expected numbers are present.
+No transformations and validations are applied during this step
+3.**Purpose**: The bronze layer serves as a foundational stage, preserving the raw state of the data for further processing in silver and gold layers.
+     
+
+  
+
+
+
+
 
 
 
