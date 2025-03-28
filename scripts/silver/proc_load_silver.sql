@@ -158,7 +158,7 @@ BEGIN
 		 ,CASE 
 			   WHEN  UPPER(TRIM(gen)) IN('F','FEMALE') THEN 'Female'
 			   WHEN UPPER(TRIM(gen)) IN('M','MALE') THEN 'Male'
-			   ELSE gen
+			   ELSE 'n/a'
 			END AS gen
 	  FROM [bronze].[erp_cust_az12]
 	  SELECT count(*) FROM [silver].[erp_cust_az12];
