@@ -197,7 +197,7 @@ The silver layer is the next stage in the data pipeline where data from the bron
 4. **Purpose**:
    - The silver layer bridges raw data (bronze) and business-aligned data (gold), ensuring that processed data is both accurate and reliable.
 
-
+![](relation_btw_srcs.png)
   
 
 
