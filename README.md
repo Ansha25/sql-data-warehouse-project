@@ -160,6 +160,7 @@ Load is the process of transferring transformed data into a target system, such 
    - Table names must begin with a category prefix.
 
 ## Building Bronze Layer
+ 
 The bronze layer is the initial stage of the data pipeline where raw data is ingested and stored without any transformations or validations.
 
 1. **Bulk Insert**:
@@ -173,7 +174,27 @@ The bronze layer is the initial stage of the data pipeline where raw data is ing
 
 3. **Purpose**:
    - The bronze layer serves as a foundational stage, preserving the raw state of the data for further processing in the silver and gold layer
-     
+
+## Building Silver Layer (Data Transformation)
+The silver layer is the next stage in the data pipeline where data from the bronze layer is transformed and cleansed to ensure consistency and usability. The focus here is on data standardization, enrichment, and the application of business rules to prepare the data for analytical and operational purposes.
+
+1. **Data Preparation**:
+   - Data from the bronze layer is ingested, and any existing data in the silver layer tables is truncated to maintain the integrity and freshness of the processed data.
+   - Stored procedures are used for bulk transformations, applying rules and mappings as needed.
+
+2. **Transformations and Business Rules**:
+   - **Standardization**: Column values are standardized (e.g., trimming strings, converting case, replacing invalid values).
+   - **Data Enrichment**: Business-specific mappings are applied (e.g., converting marital status codes, deriving product categories, and standardizing gender or country names).
+   - **Handling Nulls and Defaults**: Missing values are replaced with meaningful defaults, and invalid entries are adjusted as per defined logic.
+   - **Date Formatting**: Dates are validated and formatted to ensure consistency.
+   - **Deduplication**: Duplicate records are removed to retain only the most recent entries using ranking logic (`ROW_NUMBER`).
+
+3. **Output**:
+   - The resulting tables in the silver layer contain cleansed, deduplicated, and enriched data that is ready for further aggregation and analysis in the gold layer.
+
+4. **Purpose**:
+   - The silver layer bridges raw data (bronze) and business-aligned data (gold), ensuring that processed data is both accurate and reliable.
+
 
   
 
