@@ -146,32 +146,33 @@ Load is the process of transferring transformed data into a target system, such 
 
   ## Step3: Project Intialization
 
-  ### Naming Conventions
+## Naming Conventions
+1. **Case**: Use snake_case for all names.
+2. **Language**: Use English for naming.
+3. **Bronze Layer Rules**: 
+   - All names must start with the source system name. 
+   - Table names must match their original names without renaming.
+4. **Silver Layer Rules**:
+   - All names must start with the source system name. 
+   - Table names must match their original names without renaming.
+5. **Gold Layer Rules**: 
+   - All names must use meaningful, business-aligned names for tables.
+   - Table names must begin with a category prefix.
 
-1.**Case** : Snake Case
-2.**Language**  : English
-3.**Bronze Rules**
-All Names must start with the source system name, and table names must match their original names without renaming.
-  **<sourcesystem>_<entity>**
-4.**Silver Rules**
-All Names must start with the source system name, and table names must match their original names without renaming.
-  **<sourcesystem>_<entity>**
-5.**Gold Rules**
-All names must use meaningful, business-aligned names for tables, starting with the category prefix.
-  **<category>_<entity>**
+## Building Bronze Layer
+The bronze layer is the initial stage of the data pipeline where raw data is ingested and stored without any transformations or validations.
 
+1. **Bulk Insert**:
+   - Data is ingested using stored procedures to automate the process of inserting raw files (e.g., CSV, JSON) into the system.
 
-  ### Building Bronze Layer
+2. **Confirmation**:
+   - Basic checks are performed to ensure successful ingestion:
+     - Verify that the correct files have been ingested.
+     - Confirm that the expected number of rows is present.
+   - No transformations or validations are applied during this step.
 
-The bronze layer is the initial stage of the data pipeline where raw data is ingested into the system. The focus in this layer is to bulk load raw data without applying any validations or transformations. This ensures the data remains in its original form for further processing in subsequent layers.
-
-1.**Bulk Insert** : Data is ingested using stored procedures, which automate the process of inserting raw files (e.g., CSV, JSON) into the system.
-2.**Confirmation**: 
-Basic checks are performed to ensure that the data is successfully loaded.
-     Verify that the correct files have been ingested
-     Confirm the expected numbers are present.
-No transformations and validations are applied during this step
-3.**Purpose**: The bronze layer serves as a foundational stage, preserving the raw state of the data for further processing in silver and gold layers.
+3. **Purpose**:
+   - The bronze layer serves as a foundational stage, preserving the raw state of the data for further processing in the silver and gold layer
      
 
   
