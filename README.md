@@ -175,7 +175,7 @@ The bronze layer is the initial stage of the data pipeline where raw data is ing
 3. **Purpose**:
    - The bronze layer serves as a foundational stage, preserving the raw state of the data for further processing in the silver and gold layer
 
-![](Bronze.png)
+![](BRONZE.png)
 
 ## Building Silver Layer (Data Transformation)
 The silver layer is the next stage in the data pipeline where data from the bronze layer is transformed and cleansed to ensure consistency and usability. The focus here is on data standardization, enrichment, and the application of business rules to prepare the data for analytical and operational purposes.
