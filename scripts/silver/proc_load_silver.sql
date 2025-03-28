@@ -57,7 +57,7 @@ BEGIN
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[crm_prd_info]'
-	TRUNCATE TABLE [silver].[crm_cust_info]
+	TRUNCATE TABLE [silver].[crm_prd_info]
 	PRINT '===INSERTIING DATA INTO: [silver].[crm_prd_info]'
 
 	SET @start_time = GETDATE();
@@ -93,7 +93,7 @@ BEGIN
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[crm_sales_details]'
-	TRUNCATE TABLE [silver].[crm_cust_info]
+	TRUNCATE TABLE [silver].[crm_sales_info]
 	PRINT '===INSERTIING DATA INTO: [silver].[crm_sales_details]'
 
 	SET @start_time = GETDATE();
@@ -136,7 +136,7 @@ BEGIN
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[erp_cust_az12]'
-	TRUNCATE TABLE [silver].[crm_cust_info]
+	TRUNCATE TABLE [silver].[erp_cust_az12]
 	PRINT '===INSERTIING DATA INTO: [silver].[erp_cust_az12]'
 
 	SET @start_time = GETDATE();
@@ -164,7 +164,7 @@ BEGIN
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[erp_loc_a101]'
-	TRUNCATE TABLE [silver].[crm_cust_info]
+	TRUNCATE TABLE [silver].[erp_loc_a101]
 	PRINT '===INSERTIING DATA INTO: [silver].[erp_loc_a101]'
 
 	SET @start_time = GETDATE();
@@ -185,7 +185,7 @@ BEGIN
 	PRINT '========================================================================'
 
 	PRINT '===TRUNCATING DATA FROM: [silver].[erp_px_cat_g1v2]'
-	TRUNCATE TABLE [silver].[crm_cust_info]
+	TRUNCATE TABLE [silver].[erp_px_cat_g1v2]
 	PRINT '===INSERTIING DATA INTO: [silver].[erp_px_cat_g1v2]('
 
 	SET @start_time = GETDATE();
