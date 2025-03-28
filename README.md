@@ -198,8 +198,10 @@ The silver layer is the next stage in the data pipeline where data from the bron
    - The silver layer bridges raw data (bronze) and business-aligned data (gold), ensuring that processed data is both accurate and reliable.
 
 ![](relation_btw_srcs.png)
-  
 
+The transformations applied in the silver tables are designed based on the relationships between the tables and their potential connections. These transformations ensure the data is structured to reflect how the tables interact, enabling seamless integration and logical links across datasets.
+  
+![](SILVER.png)
 
 
 
