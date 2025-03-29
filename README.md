@@ -120,7 +120,6 @@ Load is the process of transferring transformed data into a target system, such 
    - Implements decentralized data architecture.  
    - Treats each domain as a separate "data product" while ensuring seamless collaboration.  
 
----
 
 ### Approaches for Building Data Architecture
 
@@ -240,6 +239,8 @@ In this project, we are using the **Logical Data Model** to design the database.
 
 The gold layer organizes data from the silver layer into a business-oriented structure to support analytical and reporting needs. It classifies tables into **dimensions** and **facts**, integrates them based on relationships, and represents the data using a **star schema model**.
 
+![](starschema.png)
+
 ### **Key Components**
 1. **Dimensions**:
    - **gold.dim_customers**:
@@ -254,9 +255,12 @@ The gold layer organizes data from the silver layer into a business-oriented str
      - Represents transactional sales data with links to product and customer dimensions.
      - Built by integrating `silver.crm_sales_details` with `gold.dim_products` and `gold.dim_customers`.
 
+![](Final.png)
 
 ### **Purpose**
 The gold layer transforms data into a meaningful business context, enabling use cases like **reporting** and **analysis** to support decision-making. By leveraging the star schema, it ensures high performance and ease of querying for analytical tasks.
+
+![](Gold.png)
 
 
 
