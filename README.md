@@ -204,6 +204,65 @@ The transformations applied in the silver tables are designed based on the relat
 ![](SILVER.png)
 
 
+## **Data Modeling**
+
+Data modeling refers to the process of organizing source data in a user-friendly and structured way.
+
+### **Types of Data Models**
+1. **Conceptual Data Model**:
+   - Focuses on entities and their relationships.
+   - Acts as a high-level "big picture" representation of the data.
+
+2. **Logical Data Model**:
+   - Includes entities, their relationships, and the columns in each entity.
+   - Serves as a detailed blueprint for the database design.
+
+3. **Physical Data Model**:
+   - Provides complete details about entities and their relationships.
+   - Represents the detailed implementation of the database.
+
+### **Modeling Approach in This Project**
+In this project, we are using the **Logical Data Model** to design the database.
+
+- **Logical Data Model Usage**:
+   - Typically paired with a data catalog to provide detailed column-level information for each entity.
+
+### **Logical Data Model Types**
+1. **Star Schema**:
+   - A central fact table is surrounded by dimension tables, forming a star-like structure.
+   - Efficient for analytical queries.
+
+2. **Snowflake Schema**:
+   - Similar to the star schema, but dimension tables are further normalized into multiple related tables.
+   - This creates a snowflake-like structure, offering greater detail but potentially increasing complexity.
+
+## Building Gold Layer
+
+The gold layer organizes data from the silver layer into a business-oriented structure to support analytical and reporting needs. It classifies tables into **dimensions** and **facts**, integrates them based on relationships, and represents the data using a **star schema model**.
+
+### **Key Components**
+1. **Dimensions**:
+   - **gold.dim_customers**:
+     - Stores customer details such as personal, demographic, and geographic information.
+     - Derived from `silver.crm_cust_info`, enriched with data from `silver.erp_cust_az12` and `silver.erp_loc_a101`.
+   - **gold.dim_products**:
+     - Contains product details, including category, sub-category, and product line.
+     - Built using `silver.crm_prd_info` and `silver.erp_px_cat_g1v2`. Includes only current (non-historical) product data.
+
+2. **Fact Table**:
+   - **gold.fact_sales**:
+     - Represents transactional sales data with links to product and customer dimensions.
+     - Built by integrating `silver.crm_sales_details` with `gold.dim_products` and `gold.dim_customers`.
+
+
+### **Purpose**
+The gold layer transforms data into a meaningful business context, enabling use cases like **reporting** and **analysis** to support decision-making. By leveraging the star schema, it ensures high performance and ease of querying for analytical tasks.
+
+
+
+
+
+
 
 
 
